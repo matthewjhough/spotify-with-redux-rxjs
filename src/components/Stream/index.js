@@ -1,3 +1,10 @@
-import Stream from './Stream.js';
+import { connect } from 'react-redux';
+import Stream from './Stream.jsx';
 
-export default Stream;
+function mapStateToProps({ tracks }) {
+  return {
+    tracks
+  };
+}
+
+export default connect(mapStateToProps)(Stream);
