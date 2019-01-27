@@ -9,15 +9,15 @@ export function setUserAction(user) {
   };
 }
 
-export function setUser(state, { user }) {
-  return { ...state, ...user };
-}
-
 export default function(state = initialState, action) {
   switch (action.type) {
     case USER_SET:
-      return setUser(state, action);
+      return setUserReducer(state, action);
     default:
       return state;
   }
+}
+
+export function setUserReducer(state, { user }) {
+  return { ...state, ...user };
 }

@@ -1,13 +1,19 @@
+import { login } from '../auth/index';
+import { getUser } from '../store/localStore';
 // returns a promise with request info
-export const createRequest = (url, token, method, params) =>
-  fetch(url, {
+export const createRequest = (url, method, body) => {
+  const user = getUser() || {};
+  return fetch(url, {
     method,
     headers: {
-      Authorization: `Bearer ${token}`
-    }
+      Authorization: `Bearer ${user.token}`
+    },
+    ...body
   })
     .then(res => res.json())
     .then(res => {
-      if (res.error) return [];
+      if (res.error && res.error.status === 401) return login();
+      else if (res.error) return [];
       return res;
     });
+};

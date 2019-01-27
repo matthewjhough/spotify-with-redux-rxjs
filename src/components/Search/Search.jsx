@@ -17,7 +17,7 @@ class Search extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log('Current Props: ', this.props);
     return (
       <AntSearch
         ref={this.antSearch}

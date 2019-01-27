@@ -8,5 +8,6 @@ const logger = createLogger();
 const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
 
 export default function configureStore(initialState) {
-  return createStoreWithMiddleware(reducers, initialState);
+  const loadedState = initialState === null ? undefined : initialState;
+  return createStoreWithMiddleware(reducers, loadedState);
 }

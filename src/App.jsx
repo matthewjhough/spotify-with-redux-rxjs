@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Icon } from 'antd';
 import { Stream, Search } from './components';
 import { login, mounted } from './auth';
+import { getUser } from './store/localStore';
 import './App.css';
 
 // NEXT:
@@ -14,13 +15,12 @@ export default class App extends Component {
   }
 
   render() {
-    const { setUser, user } = this.props;
-
-    if (!user.token) {
+    const user = getUser();
+    if (user === null || !user.token) {
       return (
         <div className="App">
           <header className="App-header">
-            <Button onClick={() => login(setUser)}>
+            <Button onClick={() => login(user => this.setState({ user }))}>
               Login with Spotify
               <Icon type="user" />
             </Button>

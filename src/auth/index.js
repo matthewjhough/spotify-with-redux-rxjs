@@ -1,4 +1,5 @@
 import { CLIENT_ID, SCOPES, REDIRECT_URI } from './config';
+import { saveUser } from '../store/localStore';
 
 export const config = {
   client_id: CLIENT_ID,
@@ -26,7 +27,10 @@ export function login(callback) {
     })
       .then(response => response.json())
       .then(user => {
-        if (callback) callback({ data: user, token: payload });
+        if (user.error) return saveUser({});
+        const userData = { data: user, token: payload, login };
+        saveUser(userData);
+        if (callback) callback(userData);
       });
   };
 }
@@ -38,6 +42,8 @@ export function mounted(component) {
     .split('=')[1];
 
   if (component.token) {
+    console.log(component);
+    component.forceUpdate();
     window.opener.spotifyCallback(component.token);
   }
 }
