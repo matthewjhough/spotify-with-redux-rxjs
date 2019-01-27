@@ -9,7 +9,11 @@ const Item = ({ data }) => (
         data.images.length > 0 && <Avatar src={data.images[0].url} />
       }
       title={
-        <a target="_blank" href={data.external_urls.spotify}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={data.external_urls.spotify}
+        >
           {data.name}
         </a>
       }
