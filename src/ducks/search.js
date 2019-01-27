@@ -8,10 +8,14 @@ const initialState = {};
 export function searchAction(query) {
   const url = `${SEARCH_URL}?q=${query}&type=artist,track,album`;
   const method = 'GET';
-  return {
-    type: SEARCH_ACTION,
-    query,
-    results: createRequest(url, method).then(res => res)
+  return function(dispatch) {
+    createRequest(url, method).then(results => {
+      dispatch({
+        type: SEARCH_ACTION,
+        query,
+        results
+      });
+    });
   };
 }
 
@@ -24,6 +28,6 @@ export default function(state = initialState, action) {
   }
 }
 
-export function resultReducer(state, action) {
-  return { ...state, ...action };
+export function resultReducer(state, { results, query }) {
+  return { ...state, results, query };
 }
