@@ -6,8 +6,7 @@ export const config = {
   redirect_uri: REDIRECT_URI
 };
 
-export function login(component) {
-  console.log(config);
+export function login(callback) {
   let popup = window.open(
     `https://accounts.spotify.com/authorize?client_id=${
       config.client_id
@@ -19,9 +18,7 @@ export function login(component) {
   );
 
   window.spotifyCallback = payload => {
-    component.token = payload;
     popup.close();
-
     fetch('https://api.spotify.com/v1/me', {
       headers: {
         Authorization: `Bearer ${payload}`
@@ -29,10 +26,7 @@ export function login(component) {
     })
       .then(response => response.json())
       .then(user => {
-        console.log(user);
-        component.setState({ user });
-        // CHANGE TO SETSTATE
-        // TO SAVE USER INFO
+        if (callback) callback({ data: user, token: payload });
       });
   };
 }

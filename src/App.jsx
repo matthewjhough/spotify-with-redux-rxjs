@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Stream } from './components';
+import { Button, Icon } from 'antd';
+import { Stream, Search } from './components';
 import { login, mounted } from './auth';
 import './App.css';
 
@@ -8,31 +9,38 @@ import './App.css';
 // 2) Make AJAX Call with proper headers.
 // 3) Dispatch returned records to tracks store.
 
-class App extends Component {
+export default class App extends Component {
   componentDidMount() {
     mounted(this);
   }
 
-  state = {
-    user: undefined
-  };
-
   render() {
-    console.log(this, this.state);
+    const { setUser, user } = this.props;
+
+    if (!user.token) {
+      return (
+        <div className="App">
+          <header className="App-header">
+            <Button onClick={() => login(setUser)}>
+              Login with Spotify
+              <Icon type="user" />
+            </Button>
+          </header>
+        </div>
+      );
+    }
+
     return (
-      <div className="App">
-        <header className="App-header">
-          {!this.state.user ? (
-            <button onClick={() => login(this)}>Login with Spotify</button>
-          ) : (
-            <React.Fragment>
-              <Stream />
-            </React.Fragment>
-          )}
-        </header>
+      <div className="authenticated-content">
+        <div className="content-container">
+          <Search />
+          <Stream />
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+App.defaultProps = {
+  user: {}
+};
