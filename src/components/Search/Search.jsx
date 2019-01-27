@@ -7,7 +7,7 @@ const AntSearch = Input.Search;
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSearch = debounce(this.handleSearch.bind(this), 1000);
+    this.handleSearch = debounce(this.handleSearch.bind(this), 500);
     this.antSearch = React.createRef();
   }
 
@@ -17,7 +17,6 @@ class Search extends React.Component {
   }
 
   render() {
-    console.log('Search Props: ', this.props);
     return (
       <AntSearch
         ref={this.antSearch}

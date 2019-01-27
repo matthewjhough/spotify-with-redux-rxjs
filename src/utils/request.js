@@ -4,10 +4,10 @@ export const createRequest = (url, token, method, params) =>
     method,
     headers: {
       Authorization: `Bearer ${token}`
-    },
-    body: {
-      ...params
     }
   })
     .then(res => res.json())
-    .catch(err => err);
+    .then(res => {
+      if (res.error) return [];
+      return res;
+    });
