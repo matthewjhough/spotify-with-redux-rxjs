@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Icon } from 'antd';
-import { Stream, Search } from './components';
+import { Results, Search } from './components';
 import { login, mounted } from './auth';
 import { getUser } from './store/localStore';
 import './App.css';
-
-// NEXT:
-// 2) Make AJAX Call with proper headers.
-// 3) Dispatch returned records to tracks store.
 
 export default class App extends Component {
   componentDidMount() {
@@ -33,7 +29,7 @@ export default class App extends Component {
       <div className="authenticated-content">
         <div className="content-container">
           <Search />
-          <Stream />
+          <Results />
         </div>
       </div>
     );

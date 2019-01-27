@@ -1,0 +1,11 @@
+.results {
+  padding: 15px 0;
+}
+
+.results p {
+  font-size: 12px;
+}
+
+.results-bold {
+  font-weight: bold;
+}
