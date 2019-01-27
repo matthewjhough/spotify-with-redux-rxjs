@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import { searchAction } from '../../ducks/search';
 import Search from './Search.jsx';
 
-const mapStateToProps = state => ({ ...state });
+const mapStateToProps = ({ search, user }) => ({ search, token: user.token });
 
 const mapDispatchToProps = dispatch => ({
-  search: val => dispatch(searchAction(val))
+  searchQuery: (val, token) => dispatch(searchAction(val, token))
 });
 
 export default connect(

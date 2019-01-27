@@ -12,11 +12,12 @@ class Search extends React.Component {
   }
 
   handleSearch() {
-    const { search } = this.props;
-    if (search) search(this.antSearch.current.input.state.value);
+    const { searchQuery } = this.props;
+    if (searchQuery) searchQuery(this.antSearch.current.input.state.value);
   }
 
   render() {
+    console.log(this.props);
     return (
       <AntSearch
         ref={this.antSearch}
