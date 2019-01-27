@@ -5,7 +5,6 @@ import { login, mounted } from './auth';
 import './App.css';
 
 // NEXT:
-// 1) Save & Check store - instead of state for auth data.
 // 2) Make AJAX Call with proper headers.
 // 3) Dispatch returned records to tracks store.
 
