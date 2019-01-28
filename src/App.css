@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f0f2f5;
 }
 
 code {
@@ -16,6 +17,11 @@ code {
 html,
 body {
   background: #f0f2f5;
+  height: 100%;
+}
+
+.ant-layout {
+  height: 100vmin;
 }
 
 .App {

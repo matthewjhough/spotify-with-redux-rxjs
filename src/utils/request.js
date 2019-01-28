@@ -12,8 +12,10 @@ export const createRequest = (url, method, body) => {
   })
     .then(res => res.json())
     .then(res => {
-      if (res.error && res.error.status === 401) return login();
-      else if (res.error) return [];
+      if (res.error && res.error.status === 401) {
+        login();
+        window.location.reload();
+      } else if (res.error) return [];
       return res;
     });
 };

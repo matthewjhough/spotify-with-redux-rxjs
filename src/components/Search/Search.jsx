@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 
 const AntSearch = Input.Search;
 
-class Search extends React.Component {
+class Search extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleSearch = debounce(this.handleSearch.bind(this), 1000);

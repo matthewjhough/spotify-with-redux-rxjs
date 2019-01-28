@@ -8,6 +8,8 @@ export const config = {
 };
 
 export function login(callback) {
+  console.log('Relogging....');
+  saveUser({});
   let popup = window.open(
     `https://accounts.spotify.com/authorize?client_id=${
       config.client_id
