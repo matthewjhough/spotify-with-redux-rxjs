@@ -7,6 +7,7 @@ export const SEARCH_ACTION = 'SEARCH_ACTION';
 export const RESULTS_ACTION = 'RESULTS_ACTION';
 export const SEARCH_URL = 'https://api.spotify.com/v1/search';
 export const RESULT_TYPES = 'type=artist,track,album';
+export const GET = 'GET';
 
 const initialState = {};
 
@@ -19,9 +20,7 @@ export function searchEpic(action$) {
 }
 
 export function searchFetch(action) {
-  const url = `${SEARCH_URL}?q=${action.query}&${RESULT_TYPES}`;
-  const method = 'GET';
-  return createRequest(url, method);
+  return createRequest(`${SEARCH_URL}?q=${action.query}&${RESULT_TYPES}`, GET);
 }
 
 export function searchAction(query) {
