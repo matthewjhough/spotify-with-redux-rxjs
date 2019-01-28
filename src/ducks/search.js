@@ -14,16 +14,16 @@ const initialState = {};
 export function searchEpic(action$) {
   return action$.pipe(
     ofType(SEARCH_ACTION),
-    mergeMap(action => from(searchFetch(action))),
+    mergeMap(action => from(fetchQuery(action))),
     map(resultsAction)
   );
 }
 
-export function searchFetch(action) {
+export function fetchQuery(action) {
   return createRequest(`${SEARCH_URL}?q=${action.query}&${RESULT_TYPES}`, GET);
 }
 
-export function searchAction(query) {
+export function queryAction(query) {
   return {
     type: SEARCH_ACTION,
     query: query
