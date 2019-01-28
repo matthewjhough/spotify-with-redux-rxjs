@@ -37,7 +37,7 @@ export function resultsAction(results) {
   };
 }
 
-export default function(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SEARCH_ACTION:
       return setQuery(state, action);
