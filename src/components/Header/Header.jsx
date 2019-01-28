@@ -4,7 +4,7 @@ import './header.css';
 
 const { Header: AntHeader } = Layout;
 
-const SpotifyHeader = () => (
+const Header = () => (
   <AntHeader
     style={{
       position: 'fixed',
@@ -28,4 +28,4 @@ const SpotifyHeader = () => (
   </AntHeader>
 );
 
-export default SpotifyHeader;
+export default Header;
