@@ -19,7 +19,7 @@ const Header = () => (
     <Menu
       mode="horizontal"
       defaultSelectedKeys={['1']}
-      style={{ lineHeight: '64px', width: '850px' }}
+      style={{ lineHeight: '64px', width: '850px', borderBottom: 'none' }}
     >
       <Menu.Item className="ant-nav-item" key="1">
         Spotify Search
