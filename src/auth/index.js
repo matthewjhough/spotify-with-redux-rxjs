@@ -42,7 +42,6 @@ export function mounted(component) {
     .split('=')[1];
 
   if (component.token) {
-    console.log(component);
     component.forceUpdate();
     window.opener.spotifyCallback(component.token);
   }
