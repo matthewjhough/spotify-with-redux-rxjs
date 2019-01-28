@@ -32,6 +32,7 @@ class Results extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     const { current } = this.state;
     const { query, results } = this.props;
     const currentResults = results[current] && results[current].items;
@@ -40,7 +41,7 @@ class Results extends React.Component {
         {query && (
           <p>
             Results for latest search{' '}
-            <span className="results-bold">"{query}"</span>
+            <span className="results-bold">"{`${query}`}"</span>
           </p>
         )}
 
