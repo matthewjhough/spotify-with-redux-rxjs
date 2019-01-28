@@ -4,13 +4,14 @@ import Item from './Item';
 import './list.css';
 
 const List = ({ results }) => (
-  <AntList
-    className="ant-list"
-    bordered
-    itemLayout="horizontal"
-    dataSource={results}
-    renderItem={item => <Item data={item} />}
-  />
+  <div className="ant-list-container">
+    <AntList
+      bordered
+      itemLayout="horizontal"
+      dataSource={results}
+      renderItem={item => <Item data={item} />}
+    />
+  </div>
 );
 
 export default List;

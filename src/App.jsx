@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Icon } from 'antd';
-import { Results, Search } from './components';
+import { Button, Icon, Layout } from 'antd';
+import { Results, Search, Header } from './components';
 import { login, mounted } from './auth';
 import { getUser } from './store/localStore';
 import './App.css';
@@ -26,12 +26,15 @@ export default class App extends Component {
     }
 
     return (
-      <div className="authenticated-content">
-        <div className="content-container">
-          <Search />
-          <Results />
+      <Layout>
+        <Header />
+        <div className="authenticated-content">
+          <div className="content-container">
+            <Search />
+            <Results />
+          </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }

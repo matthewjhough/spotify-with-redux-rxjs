@@ -1,3 +1,8 @@
+html,
+body {
+  background: #f0f2f5;
+}
+
 .App {
   text-align: center;
 }
@@ -32,8 +37,9 @@
 }
 
 .authenticated-content {
-  padding: 50px;
-  min-height: 100vh;
+  margin: 70px 0;
+  /* padding: 50px; */
+  /* min-height: 100vh; */
   display: flex;
   justify-content: center;
   font-size: calc(10px + 2vmin);
