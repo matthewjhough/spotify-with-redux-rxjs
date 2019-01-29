@@ -1,0 +1,8 @@
+.ant-menu {
+  width: 20%;
+}
+
+.ant-menu-custom {
+  border: 1px solid #ccc;
+  border-right-color: #fff;
+}

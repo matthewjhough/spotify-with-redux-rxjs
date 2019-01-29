@@ -1,5 +1,13 @@
 .results {
   padding: 15px 0;
+  display: flex;
+  flex-flow: column;
+}
+
+.results-display {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
 }
 
 .results p {

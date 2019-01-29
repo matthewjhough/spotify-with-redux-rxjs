@@ -14,7 +14,6 @@ export const createRequest = (url, method, body) => {
     .then(res => {
       if (res.error && res.error.status === 401) {
         login();
-        window.location.reload();
       } else if (res.error) return [];
       return res;
     });

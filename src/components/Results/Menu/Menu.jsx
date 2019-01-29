@@ -1,5 +1,6 @@
 import React from 'react';
-import { Menu as AntMenu } from 'antd';
+import { Menu as AntMenu, Icon } from 'antd';
+import './menu.css';
 
 const getFirstKey = obj => Object.keys(obj)[0];
 
@@ -18,9 +19,25 @@ class Menu extends React.PureComponent {
       });
   };
 
+  iconType = txt => {
+    switch (txt) {
+      case 'artists':
+        return <Icon type="user" />;
+      case 'tracks':
+        return <Icon type="customer-service" />;
+      case 'albums':
+        return <Icon type="solution" />;
+      default:
+        return;
+    }
+  };
+
   resultMenu = results =>
     Object.keys(results).map(result => (
-      <AntMenu.Item key={result}>{result}</AntMenu.Item>
+      <AntMenu.Item key={result}>
+        {this.iconType(result)}
+        {result}
+      </AntMenu.Item>
     ));
 
   handleClick = e => {
@@ -36,9 +53,11 @@ class Menu extends React.PureComponent {
     return (
       <React.Fragment>
         <AntMenu
+          theme="light"
+          className="ant-menu-custom"
           onClick={this.handleClick}
           selectedKeys={this.resolveKey()}
-          mode="horizontal"
+          mode="vertical"
         >
           {this.resultMenu(results)}
         </AntMenu>

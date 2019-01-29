@@ -8,11 +8,13 @@ import './results.css';
 const Results = ({ query, results, loading }) => (
   <div className="results">
     <LastQuery query={query} />
-    <Menu results={results}>
-      {({ currentResults }) => (
-        <List loading={loading} results={currentResults} />
-      )}
-    </Menu>
+    <div className="results-display">
+      <Menu results={results}>
+        {({ currentResults }) => (
+          <List loading={loading} results={currentResults} />
+        )}
+      </Menu>
+    </div>
   </div>
 );
 
