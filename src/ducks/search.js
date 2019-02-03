@@ -20,13 +20,16 @@ export function searchEpic(action$) {
 }
 
 export function fetchQuery(action) {
-  return createRequest(`${SEARCH_URL}?q=${action.query}&${RESULT_TYPES}`, GET);
+  return createRequest(`${SEARCH_URL}?q=${action.query.name}&${RESULT_TYPES}`, GET);
 }
 
 export function queryAction(query) {
   return {
     type: SEARCH_ACTION,
-    query: query
+    query: {
+      name: query,
+      url: `${SEARCH_URL}?q=${query}&${RESULT_TYPES}`
+    }
   };
 }
 
@@ -48,8 +51,8 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-export function setQuery(state, { results, query }) {
-  return { ...state, results, query, loading: true };
+export function setQuery(state, { results, query, url }) {
+  return { ...state, results, query, url, loading: true };
 }
 
 export function setResults(state, { results }) {

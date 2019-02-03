@@ -3,7 +3,7 @@ import Results from './Results';
 
 const mapStateToProps = ({ search }) => ({
   results: search.results,
-  query: search.query,
+  query: search.query.name,
   loading: search.loading
 });
 
